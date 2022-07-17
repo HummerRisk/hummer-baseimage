@@ -40,7 +40,5 @@ EXPOSE 8778 9779
 COPY run-java.sh /deployments/
 RUN chmod 755 /deployments/run-java.sh
 
-RUN curl https://company.hummercloud.com/offline-package/sigar/sigar.zip -o sigar.zip && unzip sigar.zip -d /usr/bin/ && rm -rf sigar.zip
-
 CMD [ "/deployments/run-java.sh" ]
 
