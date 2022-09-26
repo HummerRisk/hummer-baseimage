@@ -19,7 +19,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 # according to http://www.2uo.de/myths-about-urandom/
 RUN apk add --update \
     curl \
-    openjdk8-jre=8.275.01-r0 \
+    openjdk11-jre=11.0.9_p11-r0 \
     python3=3.8.10-r0 python3-dev=3.8.10-r0 py3-pip py3-setuptools  jq file coreutils \
  && rm /var/cache/apk/* \
  && echo "securerandom.source=file:/dev/urandom" >> /usr/lib/jvm/default-jvm/jre/lib/security/java.security
