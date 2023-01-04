@@ -1,10 +1,9 @@
-FROM ubuntu:20.04 as build-env
-ENV TZ=Asia/Shanghai
+FROM ubuntu:22.04 as build-env
 
 USER root
 
 ENV JAVA_APP_DIR=/deployments
-ENV JAVA_MAJOR_VERSION=8
+ENV JAVA_MAJOR_VERSION=11
 
 # Time Zone
 ENV DEBIAN_FRONTEND=noninteractive 
@@ -20,8 +19,8 @@ RUN python3 -m venv /usr/local
 
 WORKDIR /src
 
-# instal jdk8
-RUN apt-get install openjdk-8-jre  --yes
+# instal jdk11
+RUN apt-get install openjdk-11-jre  --yes
 
 # Add run script as /deployments/run-java.sh and make it executable
 COPY run-java.sh /deployments/
