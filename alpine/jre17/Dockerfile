@@ -9,15 +9,15 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C.UTF-8\
     LOG4J_FORMAT_MSG_NO_LOOKUPS=true\
     JAVA_APP_DIR=/deployments \
-    JAVA_MAJOR_VERSION=8
+    JAVA_MAJOR_VERSION=17
 RUN mkdir -p /deployments 
 
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 # Add run script as /deployments/run-java.sh and make it executable
 COPY run-java.sh /deployments/
 
-RUN apk add --no-cache --update \
+RUN apk update && apk add --no-cache --update \
     curl \
     openjdk17-jre \
     && rm /var/cache/apk/* \

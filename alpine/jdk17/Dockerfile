@@ -12,12 +12,12 @@ ENV DEBIAN_FRONTEND=noninteractive \
     JAVA_MAJOR_VERSION=17
 RUN mkdir -p /deployments 
 
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 # Add run script as /deployments/run-java.sh and make it executable
 COPY run-java.sh /deployments/
 
-RUN apk add --no-cache --update \
+RUN apk update && apk add --no-cache --update \
     curl \
     openjdk17-jdk maven \
     && rm /var/cache/apk/* \
