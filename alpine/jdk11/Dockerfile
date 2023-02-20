@@ -1,6 +1,7 @@
 FROM alpine:3.12.12
 
 USER root
+WORKDIR /opt
 
 # Time Zone
 # JAVA_APP_DIR is used by run-java.sh for finding the binaries
