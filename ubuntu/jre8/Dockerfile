@@ -3,7 +3,7 @@ FROM ubuntu:22.04 as build-env
 USER root
 
 ENV JAVA_APP_DIR=/deployments
-ENV JAVA_MAJOR_VERSION=11
+ENV JAVA_MAJOR_VERSION=8
 
 # Time Zone
 ENV DEBIAN_FRONTEND=noninteractive 
@@ -19,8 +19,8 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &
 
 WORKDIR /src
 
-# instal jdk11
-RUN apt-get install openjdk-11-jre  --yes
+# instal jdk8
+RUN apt-get install openjdk-8-jre  --yes
 
 # Add run script as /deployments/run-java.sh and make it executable
 COPY run-java.sh /deployments/
