@@ -11,11 +11,11 @@ ENV TZ=Asia/Shanghai
 
 # pre-requisite distro deps, and build env setup
 # RUN adduser --disabled-login --gecos "" custodian
-RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list
-RUN apt-get --yes clean
-RUN apt-get --yes update
-RUN apt-get --yes install build-essential curl unzip python3-venv python3-dev --no-install-recommends
-RUN python3 -m venv /usr/local
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &&  \
+    apt-get --yes clean &&  \
+    apt-get --yes update && \
+    apt-get --yes install build-essential curl unzip python3-venv python3-dev --no-install-recommends && \
+    python3 -m venv /usr/local
 
 WORKDIR /src
 
