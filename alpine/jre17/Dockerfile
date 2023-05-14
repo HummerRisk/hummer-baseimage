@@ -1,5 +1,7 @@
 FROM alpine:3.17.2
 
+ARG ARCH
+
 USER root
 
 # Time Zone
@@ -22,7 +24,10 @@ RUN apk update && apk add --no-cache --update \
     openjdk17-jre \
     && rm /var/cache/apk/* \
     && echo "securerandom.source=file:/dev/urandom" >> /usr/lib/jvm/default-jvm/jre/lib/security/java.security \
-    && chmod 755 /deployments/run-java.sh
+    && chmod 755 /deployments/run-java.sh \
+    && wget https://download.hummerrisk.com/offline-package/xpack/validator/validator_linux_$ARCH \
+    && chmod +x validator_linux_$ARCH \
+    && mv validator_linux_$ARCH /usr/local/bin/hummer_validator
 
 CMD [ "/deployments/run-java.sh" ]
 
