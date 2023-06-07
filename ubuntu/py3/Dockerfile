@@ -9,5 +9,5 @@ ENV TZ=Asia/Shanghai
 RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
     apt-get --yes clean && \
     apt-get --yes update && \
-    apt-get --yes install curl python3-venv python3-dev --no-install-recommends  && \
+    apt-get --yes install build-essential git curl python3-venv python3-dev --no-install-recommends  && \
     python3 -m venv /usr/local
